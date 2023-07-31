@@ -112,4 +112,4 @@ If you have any question, please feel free to contact us via `haoshenhs@gmail.co
 
 ## Acknowledgments
 
-This code is based on [Dehamer]([Li-Chongyi/Dehamer (github.com)](https://github.com/Li-Chongyi/Dehamer)) and [RCAN](https://github.com/yulunzhang/RCAN).
+This code is based on [Dehamer](https://github.com/Li-Chongyi/Dehamer) and [RCAN](https://github.com/yulunzhang/RCAN).
