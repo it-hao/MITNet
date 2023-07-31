@@ -1,0 +1,10 @@
+imageio==2.15.0
+matplotlib==3.3.3
+numpy==1.17.2
+opencv_python==4.6.0.66
+scikit_image==0.17.2
+skimage==0.0
+thop==0.0.31.post2005241907
+torch==2.0.1
+torchvision==0.9.1+cu101
+tqdm==4.54.1
