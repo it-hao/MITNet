@@ -27,12 +27,12 @@ pip install -r requirements.txt
 ```
 
 ## Contents
-1. [Datasets](#Datasets)
-1. [Training](#Training)
-1. [Evaluation](#Evaluation)
-1. [Results](#Results)
-1. [Citation](#Citation)
-1. [Acknowledgments](#Acknowledgments)
+1. [Datasets](#datasets)
+2. [Training](#training)
+3. [Evaluation](#evaluation)
+4. [Results](#results)
+5. [Citation](#citation)
+6. [Acknowledgments](#acknowledgments)
 
 ## Datasets
 
