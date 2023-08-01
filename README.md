@@ -2,7 +2,11 @@
 
 [Hao Shen](https://github.com/it-hao), [Zhong-Qiu Zhao](http://faculty.hfut.edu.cn/zzq123456/zh_CN/index.htm), [Yulun Zhang](https://yulunzhang.com/), [Zhao Zhang](https://sites.google.com/site/cszzhang) "Mutual Information-driven Triple Interaction Network for Efficient Image Dehazing", ACM MM, 2023.  
 
+<hr />
+
 > **Abstract:** Multi-stage architectures have shown effectiveness in image dehazing, which usually decomposes a challenging task into multiple more tractable sub-tasks and progressively estimates latent hazy-free images. Despite the remarkable progress, existing methods still suffer from the following shortcomings: (1) limited exploration of frequency domain information; (2) insufficient information interaction; (3) severe feature redundancy. To remedy these issues, we propose a novel Mutual Information-driven Triple interaction Network (MITNet) based on spatial-frequency dual domain information and two-stage architecture. To be specific, the first stage, named amplitude-guided haze removal, aims to recover the amplitude spectrum of the hazy images for haze removal. And the second stage, named phase-guided structure refined, devotes to learning the transformation and refinement of the phase spectrum. To facilitate the information exchange between two stages, an Adaptive Triple Interaction Module (ATIM) is developed to simultaneously aggregate cross-domain, cross-scale, and cross-stage features, where the fused features are further used to generate content-adaptive dynamic filters so that applying them to enhance global context representation. In addition, we impose the mutual information minimization constraint on paired scale encoder and decoder features from both stages. Such an operation can effectively reduce information redundancy and enhance cross-stage feature complementarity. Extensive experimental results over benchmark datasets show that our MITNet obtains superior results and a better trade-off between performance and model complexity.
+
+<hr />
 
 <details>
   <summary> <strong>Network Architecture</strong> (click to expand) 	</summary>
@@ -21,6 +25,14 @@ git clone https://github.com/it-hao/MITNet.git
 cd MITNet
 pip install -r requirements.txt
 ```
+
+## Contents
+1. [Datasets](#Datasets)
+1. [Training](#Training)
+1. [Evaluation](#Evaluation)
+1. [Results](#Results)
+1. [Citation](#Citation)
+1. [Acknowledgments](#Acknowledgments)
 
 ## Datasets
 
@@ -92,6 +104,32 @@ cd ./MITNet_Code_Real/code
 bash test_mitnet_nh.sh 
 ```
 
+## Results
+
+<details>
+<summary><strong> Quantitative results on the SOTS (ITS and OTS) dataset.</strong> (click to expand) </summary>
+<img src="Figs/psnr_sots.png" alt="SOTS" width="800px"/>
+</details>
+
+<details>
+<summary><strong> Quantitative results on Real-world (Dense-Haze and NH-Haze) datasets. </strong> (click to expand) </summary>
+<img src="Figs/psnr_real.png" alt="Real" width="800px"/>
+</details>
+
+<details>
+<summary><strong> Visual results on the SOTS (ITS and OTS) dataset. </strong> (click to expand) </summary>
+<img src="Figs/vis_sots.png" alt="SOTS" width="1000px"/>
+</details>
+
+<details>
+<summary><strong> Visual results on Real-world (Dense-Haze and NH-Haze) datasets.</strong> (click to expand) </summary>
+<img src="Figs/vis_real.png" alt="Real" width="1000px"/>
+</details>
+
+<details>
+<summary><strong> Model complexity.</strong> (click to expand) </summary>
+<img src="Figs/complexity.png" alt="complexity" width="1000px"/>
+</details>
 
 ## Citation
 
@@ -105,10 +143,6 @@ If you find the code helpful in your resarch or work, please cite the following 
   year={2023}
 }
 ```
-
-## Contact
-
-If you have any question, please feel free to contact us via `haoshenhs@gmail.com`.
 
 ## Acknowledgments
 
