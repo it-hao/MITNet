@@ -74,8 +74,8 @@ class Trainer():
             gt_1 = torch.fft.irfft2(gt_amp*torch.exp(1j*image_phase), norm='backward')
             # print(pha_feas[-1].size(), pha_feas[-2].size(), pha_feas[-3].size())
 
-            mutual_loss = self.mutual1(pha_feas[-1], pha_feas[-1]) + self.mutual2(pha_feas[-2], pha_feas[-2]) + \
-                self.mutual3(pha_feas[-3], pha_feas[-3])
+            mutual_loss = self.mutual1(pha_feas[-1], amp_feas[-1]) + self.mutual2(pha_feas[-2], amp_feas[-2]) + \
+                self.mutual3(pha_feas[-3], amp_feas[-3])
 
             ssim_loss = self.ssim_loss(out_1, gt) + self.ssim_loss(out_2, gt)
 
