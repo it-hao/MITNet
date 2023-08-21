@@ -8,3 +8,4 @@ thop==0.0.31.post2005241907
 torch==2.0.1
 torchvision==0.9.1+cu101
 tqdm==4.54.1
+torch==1.8.1+cu101
