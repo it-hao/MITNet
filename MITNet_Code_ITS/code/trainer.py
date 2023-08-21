@@ -69,17 +69,14 @@ class Trainer():
             gt_amp = torch.abs(gt_fft)
             gt_1 = torch.fft.irfft2(gt_amp*torch.exp(1j*image_phase), norm='backward')
 
-            mutual_loss = self.mutual1(pha_feas[-1], amp_feas[-1]) + self.mutual2(pha_feas[-2], amp_feas[-2]) + \
-                self.mutual3(pha_feas[-3], amp_feas[-3])
+            pix_loss = self.loss(out_1, gt_1) + self.loss(out_2, gt)
 
-            loss1 = self.loss(out_1, gt_1)
-            loss2 = self.loss(out_2, gt)
+            fft_loss = (self.loss(out_1_amp, gt_amp) + self.loss(out_2_fft, label_fft)) * 0.05
 
-            loss_amp = self.loss(out_1_amp, gt_amp)
-            loss_fft = self.loss(out_2_fft, label_fft)
+            mutual_loss = (self.mutual1(pha_feas[-1], amp_feas[-1]) + self.mutual2(pha_feas[-2], amp_feas[-2]) + \
+                self.mutual3(pha_feas[-3], amp_feas[-3])) * 0.01
 
-            loss = loss1 + loss2 + mutual_loss * 0.001 + 0.05*(loss_amp + loss_fft)
-            # print(loss1.item(), loss2.item(), 0.05 * loss_amp.item(), 0.05 * loss_fft.item(), 0.1 * reg * mutual_loss.item())
+            loss = pix_loss + fft_loss + mutual_loss
             # ================================================loss ============================================
             # ==================================================================================================
 
@@ -98,8 +95,8 @@ class Trainer():
                     len(self.loader_train.dataset),
                     # self.loss.display_loss(batch),
                     loss.item(),
-                    loss1.item(),
-                    loss2.item(),
+                    pix_loss.item(),
+                    fft_loss.item(),
                     mutual_loss.item(),
                     timer_model.release(),
                     timer_data.release()))

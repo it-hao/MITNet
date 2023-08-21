@@ -72,22 +72,17 @@ class Trainer():
             out_2_fft = torch.stack((out_2_fft.real, out_2_fft.imag), -1)
             gt_amp = torch.abs(gt_fft)
             gt_1 = torch.fft.irfft2(gt_amp*torch.exp(1j*image_phase), norm='backward')
-            # print(pha_feas[-1].size(), pha_feas[-2].size(), pha_feas[-3].size())
-
-            mutual_loss = self.mutual1(pha_feas[-1], amp_feas[-1]) + self.mutual2(pha_feas[-2], amp_feas[-2]) + \
-                self.mutual3(pha_feas[-3], amp_feas[-3])
 
             ssim_loss = self.ssim_loss(out_1, gt) + self.ssim_loss(out_2, gt)
 
-            loss1 = self.loss(out_1, gt_1)
-            loss2 = self.loss(out_2, gt)
+            pix_loss = self.loss(out_1, gt_1) + self.loss(out_2, gt)
 
-            loss_amp = self.loss(out_1_amp, gt_amp)
-            loss_fft = self.loss(out_2_fft, label_fft)
+            fft_loss = (self.loss(out_1_amp, gt_amp) + self.loss(out_2_fft, label_fft)) * 0.05
 
-            # reg = self.adjust(0, 1, epoch, self.args.epochs)
-            loss = ssim_loss + loss1 + loss2 + 0.001 * mutual_loss + 0.05*(loss_amp + loss_fft)
-            # print(ssim_loss.item(), loss1.item(), loss2.item(), 0.05 * loss_amp.item(), 0.05 * loss_fft.item(),  mutual_loss.item(), 0.001 * mutual_loss.item())
+            mutual_loss = (self.mutual1(pha_feas[-1], amp_feas[-1]) + self.mutual2(pha_feas[-2], amp_feas[-2]) + \
+                self.mutual3(pha_feas[-3], amp_feas[-3])) * 0.01
+
+            loss = ssim_loss + pix_loss + fft_loss + mutual_loss
             # ================================================loss ============================================
             # ==================================================================================================
 
