@@ -80,7 +80,7 @@ class Trainer():
             fft_loss = (self.loss(out_1_amp, gt_amp) + self.loss(out_2_fft, label_fft)) * 0.05
 
             mutual_loss = (self.mutual1(pha_feas[-1], amp_feas[-1]) + self.mutual2(pha_feas[-2], amp_feas[-2]) + \
-                self.mutual3(pha_feas[-3], amp_feas[-3])) * 0.01
+                self.mutual3(pha_feas[-3], amp_feas[-3])) * 0.001
 
             loss = ssim_loss + pix_loss + fft_loss + mutual_loss
             # ================================================loss ============================================
