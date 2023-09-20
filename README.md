@@ -1,6 +1,6 @@
 ## Mutual Information-driven Triple Interaction Network for Efficient Image Dehazing 
 
-[Hao Shen](https://github.com/it-hao), [Zhong-Qiu Zhao](http://faculty.hfut.edu.cn/zzq123456/zh_CN/index.htm), [Yulun Zhang](https://yulunzhang.com/), [Zhao Zhang](https://sites.google.com/site/cszzhang) "Mutual Information-driven Triple Interaction Network for Efficient Image Dehazing", ACM MM, 2023.  
+[Hao Shen](https://github.com/it-hao), [Zhong-Qiu Zhao](http://faculty.hfut.edu.cn/zzq123456/zh_CN/index.htm), [Yulun Zhang](https://yulunzhang.com/), [Zhao Zhang](https://sites.google.com/site/cszzhang) "Mutual Information-driven Triple Interaction Network for Efficient Image Dehazing", ACM MM, 2023.  [[Arxiv](https://arxiv.org/pdf/2308.06998)]
 
 <hr />
 
