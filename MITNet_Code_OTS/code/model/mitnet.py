@@ -284,6 +284,7 @@ class FFTConvBlock(nn.Module):
         res_out = self.resConv(x)
         identity = self.identity(x)
         out = res_out + identity
+
         if self.use_FFT_PHASE and self.use_FFT_AMP == False:
             # x_fft =torch.fft.fft2(x_res, dim=(-2, -1))
             x_fft = torch.fft.rfft2(out, norm='backward')
@@ -326,7 +327,7 @@ class UNetUpBlockStage1(nn.Module):
     def __init__(self, in_size, out_size, relu_slope, use_FFT_AMP=False, use_FFT_PHASE=False):
         super(UNetUpBlockStage1, self).__init__()
         self.up = nn.ConvTranspose2d(in_size, out_size, kernel_size=2, stride=2, bias=True)
-        self.conv_block = FFTConvBlock(in_size, out_size, False, relu_slope, False, use_FFT_PHASE=use_FFT_PHASE, use_FFT_AMP=use_FFT_AMP)
+        self.conv_block = FFTConvBlock(in_size, out_size, False, relu_slope, use_FFT_AMP, use_FFT_PHASE)
 
     def forward(self, x, bridge):
         up = self.up(x)
@@ -338,7 +339,7 @@ class UNetUpBlockStage2(nn.Module):
     def __init__(self, in_size, out_size, relu_slope, use_FFT_AMP=False, use_FFT_PHASE=False):
         super(UNetUpBlockStage2, self).__init__()
         self.up = nn.ConvTranspose2d(in_size, out_size, kernel_size=2, stride=2, bias=True)
-        self.conv_block = FFTConvBlock(in_size, out_size, False, relu_slope, False, use_FFT_PHASE=use_FFT_PHASE, use_FFT_AMP=use_FFT_AMP)
+        self.conv_block = FFTConvBlock(in_size, out_size, False, relu_slope, use_FFT_AMP, use_FFT_PHASE)
 
         self.afg = (AFG(out_size, 3))
 
